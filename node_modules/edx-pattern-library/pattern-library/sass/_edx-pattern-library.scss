@@ -1,0 +1,27 @@
+// ------------------------------
+// edX Pattern Library : Complete Import
+
+// About: Import all dependencies and current pattern styling of the edX Pattern Library
+
+// ------------------------------
+// #CORE
+// ------------------------------
+@import 'global/core';
+
+
+// ------------------------------
+// #PATTERNS
+// ------------------------------
+@import 'patterns/buttons';
+@import 'patterns/headings';
+@import 'patterns/copy';
+@import 'patterns/lists';
+@import 'patterns/forms';
+@import 'patterns/grid';
+@import 'patterns/icons';
+@import 'patterns/layouts';
+@import 'patterns/depth';
+@import 'patterns/tables';
+@import 'patterns/alerts';
+@import 'patterns/dropdown-menu';
+@import 'patterns/breadcrumbs';

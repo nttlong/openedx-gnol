@@ -1,0 +1,596 @@
+// ------------------------------
+// edX Pattern Library: Components - Layouts
+
+// About: Contains base settings and options for the preset default Pattern Library UI Layouts.
+
+// #CANNED - IN VIEW
+// #CANNED - VIEW
+
+@import 'grid';
+
+// ----------------------------
+// #CANNED - IN VIEW
+// ----------------------------
+
+// Full Layout
+.layout-full {
+    @include grid-container;
+
+    .layout-col-a,
+    .layout-col-b,
+    .layout-col-c,
+    .layout-col-d {
+        @include span(12);
+    }
+}
+
+.layout-col {
+    @include grid-row;
+}
+
+// 1/4 + 3/4 Layout
+.layout-1q3q {
+
+    // CASE: standard layout
+    &.layout {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(3);
+            }
+
+            .layout-col-b {
+                @include span(9);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-flush {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(3, before);
+            }
+
+            .layout-col-b {
+                @include span(9, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-reversed {
+        @include grid-container(row-reverse);
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(3);
+            }
+
+            .layout-col-b {
+                @include span(9);
+            }
+        }
+    }
+}
+
+// 1/3 + 1/3 + 1/3 Layout
+.layout-1t1t1t {
+
+    // CASE: standard layout
+    &.layout {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(4);
+            }
+
+            .layout-col-b {
+                @include span(4);
+            }
+
+            .layout-col-c {
+                @include span(4);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-flush {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(4, before);
+            }
+
+            .layout-col-b {
+                @include span(4, none);
+            }
+
+            .layout-col-c {
+                @include span(4, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-reversed {
+        @include grid-container(row-reverse);
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(4);
+            }
+
+            .layout-col-b {
+                @include span(4);
+            }
+
+            .layout-col-c {
+                @include span(4);
+            }
+        }
+    }
+}
+
+// 1/3 + 2/3 Layout
+.layout-1t2t {
+
+    // CASE: standard layout
+    &.layout {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(4);
+            }
+
+            .layout-col-b {
+                @include span(8);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-flush {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(4, before);
+            }
+
+            .layout-col-b {
+                @include span(8, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-reversed {
+        @include grid-container(row-reverse);
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(4);
+            }
+
+            .layout-col-b {
+                @include span(8);
+            }
+        }
+    }
+}
+
+// 1/2 + 1/2 Layout
+.layout-1h1h {
+    // CASE: standard layout
+    &.layout {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+
+            .layout-col-a {
+                @include span(6);
+            }
+
+            .layout-col-b {
+                @include span(6);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-flush {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(6, before);
+            }
+
+            .layout-col-b {
+                @include span(6, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-reversed {
+        @include grid-container(row-reverse);
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(6);
+            }
+
+            .layout-col-b {
+                @include span(6);
+            }
+        }
+    }
+}
+
+// 1/4 + 1/2 + 1/4 Layout
+.layout-1q1h1q {
+    // CASE: standard layout
+    &.layout {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+
+            .layout-col-a {
+                @include span(3);
+            }
+
+            .layout-col-b {
+                @include span(6);
+            }
+
+            .layout-col-c {
+                @include span(3);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-flush {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(3, before);
+            }
+
+            .layout-col-b {
+                @include span(6, none);
+            }
+
+            .layout-col-c {
+                @include span(3, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-reversed {
+        @include grid-container(row-reverse);
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(3);
+            }
+
+            .layout-col-b {
+                @include span(6);
+            }
+
+            .layout-col-c {
+                @include span(3);
+            }
+        }
+    }
+}
+
+// 1/4 + 1/4 + 1/2 Layout
+.layout-1q1q1h {
+    // CASE: standard layout
+    &.layout {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(3);
+            }
+
+            .layout-col-b {
+                @include span(3);
+            }
+
+            .layout-col-c {
+                @include span(6);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-flush {
+        @include grid-container;
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(3, before);
+            }
+
+            .layout-col-b {
+                @include span(3, none);
+            }
+
+            .layout-col-c {
+                @include span(6, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-reversed {
+        @include grid-container(row-reverse);
+        @media(min-width: $bp-screen-md) {
+            .layout-col-a {
+                @include span(3);
+            }
+
+            .layout-col-b {
+                @include span(3);
+            }
+
+            .layout-col-c {
+                @include span(6);
+            }
+        }
+    }
+}
+
+// ----------------------------
+// #CANNED - VIEW
+// ----------------------------
+// 1/2 + 1/2 View Layout
+.layout-view-1h1h {
+    // CASE: standard layout
+    &.layout-view {
+        @include grid-container(row, auto);
+        @media(min-width: $bp-screen-md) {
+
+            .layout-view-col-a {
+                @include span(6);
+            }
+
+            .layout-view-col-b {
+                @include span(6);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-view-flush {
+        @include grid-container(row, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(6, before);
+            }
+
+            .layout-view-col-b {
+                @include span(6, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-view-reversed {
+        @include grid-container(row-reverse, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(6);
+            }
+
+            .layout-view-col-b {
+                @include span(6);
+            }
+        }
+    }
+}
+
+// 1/3 + 1/3 + 1/3 View Layout
+.layout-view-1t1t1t {
+    // CASE: standard layout
+    &.layout-view {
+        @include grid-container(row, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(4);
+            }
+
+            .layout-view-col-b {
+                @include span(4);
+            }
+
+            .layout-view-col-c {
+                @include span(4);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-view-flush {
+        @include grid-container(row, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(4, before);
+            }
+
+            .layout-view-col-b {
+                @include span(4, none);
+            }
+
+            .layout-view-col-c {
+                @include span(4, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-view-reversed {
+        @include grid-container(row-reverse, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(4);
+            }
+
+            .layout-view-col-b {
+                @include span(4);
+            }
+
+            .layout-view-col-c {
+                @include span(4);
+            }
+        }
+    }
+}
+
+// 1/4 + 1/2 + 1/4 View Layout
+.layout-view-1q1h1q {
+
+    // CASE: standard layout
+    &.layout-view {
+        @include grid-container(row, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(3);
+            }
+
+            .layout-view-col-b {
+                @include span(6);
+            }
+
+            .layout-view-col-c {
+                @include span(3);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-view-flush {
+        @include grid-container(row, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(3, before);
+            }
+
+            .layout-view-col-b {
+                @include span(6, none);
+            }
+
+            .layout-view-col-c {
+                @include span(3, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-view-reversed {
+        @include grid-container(row-reverse, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(3);
+            }
+
+            .layout-view-col-b {
+                @include span(6);
+            }
+
+            .layout-view-col-c {
+                @include span(3);
+            }
+        }
+    }
+}
+
+// 1/3 + 2/3 View Layout
+.layout-view-1t2t {
+
+    // CASE: standard layout
+    &.layout-view {
+        @include grid-container(row, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(4);
+            }
+
+            .layout-view-col-b {
+                @include span(8);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-view-flush {
+        @include grid-container(row, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(4, before);
+            }
+
+            .layout-view-col-b {
+                @include span(8, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-view-reversed {
+        @include grid-container(row-reverse, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(4);
+            }
+
+            .layout-view-col-b {
+                @include span(8);
+            }
+        }
+    }
+}
+
+// 1/4 + 3/4 View Layout
+.layout-view-1q3q {
+
+    // CASE: standard layout
+    &.layout-view {
+        @include grid-container(row, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(3);
+            }
+
+            .layout-view-col-b {
+                @include span(9);
+            }
+        }
+    }
+
+    // CASE: flush layout
+    &.layout-view-flush {
+        @include grid-container(row, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(3, before);
+            }
+
+            .layout-view-col-b {
+                @include span(9, after);
+            }
+        }
+    }
+
+    // CASE: reversed layout
+    &.layout-view-reversed {
+        @include grid-container(row-reverse, auto);
+        @media(min-width: $bp-screen-md) {
+            .layout-view-col-a {
+                @include span(3);
+            }
+
+            .layout-view-col-b {
+                @include span(9);
+            }
+        }
+    }
+}

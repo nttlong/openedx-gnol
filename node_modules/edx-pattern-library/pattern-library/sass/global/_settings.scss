@@ -1,0 +1,331 @@
+// ------------------------------
+// edX Pattern Library: Variables
+
+// About: Sass partial for defining variables used throughout the applications.
+
+// #PATHS:          paths for particular assets
+// #UNITS:          Basic units of measurement
+// #GRID:           Grid and layout variables
+// #COLORS:         Base, palette and theme color definitions + application
+// #TYPOGRAPHY:     Font definitions and scales
+// #DEPTH:          UI depth-based scale
+// #SPACING:        General UI spacing variables and scale
+// #TIMING:         Event timing variables
+// #APPLICATIONS:   Applying configuration
+
+
+// ----------------------------
+// #PATHS
+// ----------------------------
+$pattern-library-path: '..' !default;
+$font-path: '#{$pattern-library-path}/fonts' !default;
+$image-path: '#{$pattern-library-path}/images' !default;
+
+// ----------------------------
+// #UNITS
+// ----------------------------
+$em-base: 16; // deliberately sets bourbon-based em-base (http://bourbon.io/docs/#em-base)
+
+
+// ----------------------------
+// #GRID
+// ----------------------------
+// grid - dimensions
+$grid-max-width:                rem(1170) !default;
+$grid-column-count:             12 !default;
+$grid-gutter-width:             rem($em-base) !default;
+$grid-direction:                row !default; // set to 'row-reverse' to reverse. Follows flexbox spec.
+$grid-debug-color:              rgba(203, 89, 141, 0.33) !default;
+$grid-debug-color-alt:          rgba(0, 121, 188, 0.33) !default;
+
+// grid - breakpoints
+$bp-screen-sm:                  480px !default;
+$bp-screen-md:                  768px !default;
+$bp-screen-lg:                  1024px !default;
+$bp-screen-xl:                  1280px !default;
+
+
+// ----------------------------
+// #COLORS
+// ----------------------------
+// color: config
+$transparent:                   rgba(0, 0, 0, 0);
+
+$black:                         rgb(22, 22, 22);
+$white:                         rgb(255, 255, 255);
+$gray:                          rgb(138, 143, 143);
+$red:                           rgb(178, 6, 16);
+$yellow:                        rgb(255, 192, 31);
+$green:                         rgb(0, 129, 0);
+$blue:                          rgba(0, 117, 180, 100);
+$pink:                          rgba(194, 56, 125, 100);
+
+// colors:                      brand
+$brand-primary:                 $blue !default;
+$brand-secondary:               $pink !default;
+
+// colors: utilities
+$success:                       $green !default;
+$warning:                       $yellow !default;
+$error:                         $red !default;
+$information:                   $blue !default;
+
+// colors: palettes
+$palettes: (
+    primary: (
+        dark:       rgba(6, 86, 131, 100),
+        base:       rgba(0, 117, 180, 100),
+        accent:     rgba(41, 145, 195, 100),
+        back:       rgba(204, 227, 240, 100),
+        x-back:     rgba(242, 248, 251, 100)
+    ),
+    secondary: (
+        dark:       rgba(152, 44, 98, 100),
+        base:       rgba(194, 56, 125, 100),
+        accent:     rgba(224, 155, 190, 100),
+        back:       rgba(243, 215, 229, 100),
+        x-back:     rgba(252, 245, 248, 100)
+    ),
+    grayscale: (
+        dark:       rgba(17, 17, 17, 100),
+        base:       rgba(65, 65, 65, 100),
+        accent:     rgba(160, 160, 160, 100),
+        back:       rgba(217, 217, 217, 100),
+        x-back:     rgba(245, 245, 245, 100)
+    ),
+    success: (
+        text:       $success,
+        accent:     lighten($success, 5%),
+        back:       desaturate(lighten($success, 70%), 45%)
+    ),
+    error: (
+        text:       $error,
+        accent:     lighten($error, 5%),
+        back:       lighten($error, 60%)
+    ),
+    warning: (
+        accent:     $warning,
+        back:       lighten($warning, 40%)
+    ),
+    information: (
+        text:       $information,
+        accent:     lighten($information, 5%),
+        back:       lighten($information, 58%)
+    ),
+);
+
+// shadows
+$shadow:            rgba(0, 0, 0, .25);
+
+
+// ----------------------------
+// #TYPOGRAPHY
+// ----------------------------
+// typography: Open Sans
+
+$open-sans-font-path: '#{$font-path}/OpenSans' !default;
+
+@include font-face(
+    'Open Sans',
+    '#{$open-sans-font-path}/OpenSans-Light-webfont',
+    300,
+    $file-formats: woff woff2 ttf
+);
+@include font-face(
+    'Open Sans',
+    '#{$open-sans-font-path}/OpenSans-LightItalic-webfont',
+    300,
+    italic,
+    $file-formats: woff woff2 ttf
+);
+@include font-face(
+    'Open Sans',
+    '#{$open-sans-font-path}/OpenSans-Regular-webfont',
+    400,
+    $file-formats: woff woff2 ttf
+);
+@include font-face(
+    'Open Sans',
+    '#{$open-sans-font-path}/OpenSans-Italic-webfont',
+    400,
+    italic,
+    $file-formats: woff woff2 ttf
+);
+@include font-face(
+    'Open Sans',
+    '#{$open-sans-font-path}/OpenSans-Semibold-webfont',
+    600,
+    $file-formats: woff woff2 ttf
+);
+@include font-face(
+    'Open Sans',
+    '#{$open-sans-font-path}/OpenSans-SemiboldItalic-webfont',
+    600,
+    italic,
+    $file-formats: woff woff2 ttf
+);
+@include font-face(
+    'Open Sans',
+    '#{$open-sans-font-path}/OpenSans-Bold-webfont',
+    700,
+    $file-formats: woff woff2 ttf
+);
+@include font-face(
+    'Open Sans',
+    '#{$open-sans-font-path}/OpenSans-BoldItalic-webfont',
+    700,
+    italic,
+    $file-formats: woff woff2 ttf
+);
+
+// typography: config - stacks
+$font-family-sans-serif:    'Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$font-family-serif:         'Georgia', Cambria, 'Times New Roman', Times, serif !default;
+$font-family-monospace:     'Bitstream Vera Sans Mono', Consolas, Courier, monospace !default;
+
+// typography: sizes
+$font-sizes: (
+    xxxx-large:     38,
+    xxx-large:      28,
+    xx-large:       24,
+    x-large:        21,
+    large:          18,
+    base:           16,
+    small:          14,
+    x-small:        12,
+    xx-small:       11,
+    xxx-small:      10,
+);
+
+// typography: line-height
+$line-heights: (
+    xxxx-large:     1.40,
+    xxx-large:      1.40,
+    xx-large:       1.40,
+    x-large:        1.50,
+    large:          1.60,
+    base:           1.5,
+    small:          1.60,
+    x-small:        1.5,
+    xx-small:       1.5,
+    xxx-small:      1.5,
+    none:           0
+);
+
+// typography: weights
+$font-weights: (
+    normal:         400,
+    light:          300,
+    x-light:        200,
+    semi-bold:      600,
+    bold:           700
+);
+
+// typography: letter-spacing
+$letter-spacing: (
+    normal:         0,
+    xx-tight:       -3,
+    x-tight:        -2,
+    tight:          -.095,
+    loose:          .5,
+    x-loose:        1,
+    xx-loose:       2
+);
+
+
+// ----------------------------
+// #DEPTH
+// ----------------------------
+$z-depths: (
+    base:           1,
+    mid-back:       -10,
+    back:           -100,
+    very-back:      -1000,
+    mid-front:      10,
+    front:          100,
+    very-front:     1000
+);
+
+
+// ----------------------------
+// #SPACING
+// ----------------------------
+// spacing - baseline
+$baseline:                  20px !default;
+
+// vertical spacing
+$baseline-vertical:         ($baseline*2) !default;
+
+$spacing-vertical:          (
+    base:                   $baseline-vertical,
+    mid-small:              ($baseline-vertical*0.75),
+    small:                  ($baseline-vertical/2),
+    x-small:                ($baseline-vertical/4),
+    xx-small:               ($baseline-vertical/8),
+    xxx-small:              ($baseline-vertical/10),
+    mid-large:              ($baseline-vertical*1.5),
+    large:                  ($baseline-vertical*2),
+    x-large:                ($baseline-vertical*4)
+);
+
+// horizontal spacing
+$baseline-horizontal:       $baseline !default;
+
+$spacing-horizontal:        (
+    base:                   $baseline-horizontal,
+    mid-small:              ($baseline-horizontal*0.75),
+    small:                  ($baseline-horizontal/2),
+    x-small:                ($baseline-horizontal/4),
+    xx-small:               ($baseline-horizontal/8),
+    mid-large:              ($baseline-horizontal*1.5),
+    large:                  ($baseline-horizontal*2),
+    x-large:                ($baseline-horizontal*4)
+);
+
+
+// ----------------------------
+// #TIMING
+// ----------------------------
+$timing: (
+    base:       0.75s,
+    slow:       1s,
+    x-slow:     1.5s,
+    fast:       0.5s,
+    x-fast:     0.25s,
+    xx-fast:    0.125s
+);
+
+
+// ----------------------------
+// #APPLICATIONS
+// ----------------------------
+// base component settings
+$component-focus-color:                     inherit !default;
+$component-focus-bg:                        palette(primary, x-light) !default;
+$component-active-color:                    palette(grayscale, base) !default;
+$component-active-bg:                       palette(primary, base) !default;
+$component-border-radius:                   3px !default;
+
+// base text settings
+$text-base-font-family:                     $font-family-sans-serif !default;
+$text-base-color:                           palette(grayscale, x-dark) !default;
+$text-base-font-weight:                     font-weight(normal) !default;
+$text-base-focus-color:                     palette(grayscale, black) !default;
+
+$text-emphasized-color:                     palette(grayscale, black) !default;
+$text-emphasized-font-weight:               font-weight(normal) !default;
+
+$text-de-emphasized-color:                  palette(grayscale, dark) !default;
+$text-de-emphasized-font-weight:            font-weight(normal) !default;
+
+
+// links
+$link-color:                                palette(primary, dark) !default;
+$link-focus-color:                          palette(primary, light) !default;
+$link-visited-color:                        palette(primary, dark) !default;
+
+
+// hide focus of programmatic elements
+[tabindex="-1"] {
+    outline: none;
+}

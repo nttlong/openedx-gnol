@@ -1,0 +1,360 @@
+// ------------------------------
+// edX Pattern Library: Components - Buttons
+
+// About: Contains base styling for demonstration and utility for buttons.
+// ----------------------------
+
+// #SETTINGS
+// #GLOBALS
+// #SIZES
+// #BASE
+// #NEUTRAL
+// #BRAND
+// #LINK
+// #INVERSE
+// #COMBO
+// #APPLICATION
+// ----------------------------
+
+
+// ----------------------------
+// #SETTINGS
+// ----------------------------
+$btn-border-style:                          solid !default;
+$btn-border-size:                           1px !default;
+$btn-shadow:                                3px !default;
+$btn-font-weight:                           font-weight(semi-bold) !default;
+$btn-border-radius:                         $component-border-radius !default;
+$btn-focus-color:                           palette(primary, dark) !default;
+$btn-focus-text-color:                      palette(primary, x-back) !default;
+$btn-disabled-text-color:                   palette(grayscale, accent) !default;
+$btn-disabled-background-color:             palette(grayscale, x-back) !default;
+$btn-disabled-border-color:                 palette(grayscale, back) !default;
+
+// sizes
+$btn-large-padding-vertical: spacing-vertical(small);
+$btn-large-padding-horizontal: spacing-horizontal(mid-large);
+$btn-large-font-size: font-size(large);
+
+$btn-base-padding-vertical: spacing-vertical(x-small);
+$btn-base-padding-horizontal: spacing-horizontal(base);
+$btn-base-font-size: font-size(base);
+
+$btn-small-padding-vertical: spacing-vertical(x-small);
+$btn-small-padding-horizontal: spacing-horizontal(small);
+$btn-small-font-size: font-size(small);
+
+// ----------------------------
+// #GLOBALS
+// ----------------------------
+%btn {
+    @include transition(
+        color timing(xx-fast) ease-in-out 0s,
+        border-color timing(xx-fast) ease-in-out 0s,
+        background timing(xx-fast) ease-in-out 0s,
+        box-shadow timing(xx-fast) ease-in-out 0s
+    );
+    display: inline-block;
+    border-style: $btn-border-style;
+    border-radius: $btn-border-radius;
+    border-width: $btn-border-size;
+    padding: $btn-base-padding-vertical $btn-base-padding-horizontal;
+    font-size: $btn-base-font-size;
+    font-weight: $btn-font-weight;
+
+    // Display: block, one button per line, full width
+    &.block {
+        display: block;
+        width: 100%;
+    }
+
+    // STATE: is disabled
+    &:disabled,
+    &.is-disabled {
+        @extend %state-disabled;
+    }
+
+    .icon {
+        display: inline-block;
+        vertical-align: baseline;
+        @include margin-right(spacing-horizontal(x-small));
+
+        &:only-child,
+        .sr-only + & {
+            margin-right: 0;
+        }
+    }
+
+    // Don't show underlines on links that are styled as buttons
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+
+// ----------------------------
+// #SIZES
+// ----------------------------
+// large
+%btn-large {
+    padding: $btn-large-padding-vertical $btn-large-padding-horizontal;
+    font-size: $btn-large-font-size;
+}
+
+// small
+%btn-small {
+    padding: $btn-small-padding-vertical $btn-small-padding-horizontal;
+    font-size: $btn-small-font-size;
+}
+
+
+// ----------------------------
+// #DEFAULT
+// ----------------------------
+%btn-default {
+    @extend %btn;
+    border-color: palette(primary, base);
+    background: $white;
+    color: palette(primary, base);
+
+    // STATE: hover and focus
+    &:hover,
+    &.is-hovered,
+    &:focus,
+    &.is-focused {
+        border-color: $btn-focus-color;
+        background: $btn-focus-color;
+        color: $btn-focus-text-color;
+    }
+
+    // STATE: is pressed or active
+    &:active,
+    &.is-pressed,
+    &.is-active {
+        border-color: palette(primary, dark);
+        background: palette(primary, back);
+        color: palette(primary, dark);
+    }
+
+    // STATE: is disabled
+    &:disabled,
+    &.is-disabled {
+        border-color: $btn-disabled-border-color;
+        color: $btn-disabled-text-color;
+    }
+}
+
+
+// ----------------------------
+// #NEUTRAL
+// ----------------------------
+%btn-neutral {
+    @extend %btn;
+    border-color: palette(grayscale, base);
+    background: palette(grayscale, x-back);
+    color: palette(grayscale, base);
+
+    // STATE: hover and focus
+    &:hover,
+    &.is-hovered,
+    &:focus,
+    &.is-focused {
+        border-color: $btn-focus-color;
+        background: $btn-focus-color;
+        color: $btn-focus-text-color;
+    }
+
+    // STATE: is pressed or active
+    &:active,
+    &.is-pressed,
+    &.is-active {
+        border-color: palette(primary, base);
+        background: palette(primary, base);
+    }
+
+    // STATE: is disabled
+    &:disabled,
+    &.is-disabled {
+        border-color: $btn-disabled-border-color;
+        background: $btn-disabled-background-color;
+        color: $btn-disabled-text-color;
+    }
+}
+
+
+
+// ----------------------------
+// #BRAND
+// ----------------------------
+%btn-brand {
+    @extend %btn;
+    border-color: palette(primary, base);
+    background: palette(primary, base);
+    color: palette(primary, x-back);
+
+    // STATE: hover and focus
+    &:hover,
+    &.is-hovered,
+    &:focus,
+    &.is-focused {
+        border-color: $btn-focus-color;
+        background: $btn-focus-color;
+        color: $btn-focus-text-color;
+    }
+
+    // STATE: is pressed or active
+    &:active,
+    &.is-pressed,
+    &.is-active {
+        border-color: palette(primary, base);
+        background: palette(primary, base);
+        color: palette(primary, back);
+    }
+
+    // STATE: is disabled
+    &:disabled,
+    &.is-disabled {
+        border-color: $btn-disabled-border-color;
+        background: $btn-disabled-background-color;
+        color: $btn-disabled-text-color;
+    }
+}
+
+
+// ----------------------------
+// #LINK
+// ----------------------------
+%btn-link {
+    @extend %btn;
+    @extend %link;
+
+    // reset of inherited buttons
+    border-radius: 0;
+    border-color: $transparent;
+    padding: 1px;
+    background: $transparent;
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: underline;
+    }
+
+    &:disabled {
+        // disabled links shouldn't be in the interface
+        // plus, having them pass AA guidelines would make them no longer look disabled
+        display: none;
+    }
+}
+
+
+// ----------------------------
+// #COMBO
+// ----------------------------
+%btn-group {
+    display: flex;
+
+    .btn {
+        @extend .btn-neutral;
+        @include margin-left(-($btn-border-size));
+        border-radius: 0;
+
+        &:first-child {
+            @include border-top-left-radius($btn-border-radius);
+            @include border-bottom-left-radius($btn-border-radius);
+            @include margin-left(0);
+        }
+
+        // targets the last element in a parent container
+        &:last-child {
+            @include border-top-right-radius($btn-border-radius);
+            @include border-bottom-right-radius($btn-border-radius);
+        }
+
+        &:only-child {
+            @include margin-left(0);
+            border-radius: $btn-border-radius;
+        }
+    }
+}
+
+
+// ----------------------------
+// #INVERSE
+// ----------------------------
+%btn-inverse {
+    @extend %btn;
+    border-color: palette(primary, x-back);
+    background: $transparent;
+    color: palette(primary, x-back);
+
+    // STATE: hover and focus
+    &:hover,
+    &.is-hovered,
+    &:focus,
+    &.is-focused {
+        background: palette(primary, x-back);
+        color: palette(primary, accent);
+
+    }
+
+    // STATE: is pressed or active
+    &:active,
+    &.is-pressed,
+    &.is-active {
+        color: palette(primary, base);
+    }
+
+    // STATE: is disabled
+    &:disabled,
+    &.is-disabled {
+        border-color: palette(grayscale, accent);
+        color: $btn-disabled-text-color;
+    }
+}
+
+
+// ----------------------------
+// #APPLICATION
+// ----------------------------
+// default
+.btn {
+    @extend %btn-default;
+}
+
+// neutral
+.btn-neutral {
+    @extend %btn-neutral;
+}
+
+// labrandrge
+.btn-brand {
+    @extend %btn-brand;
+}
+
+// link
+.btn-link {
+    @extend %btn-link;
+}
+
+// inverse
+.btn-inverse {
+    @extend %btn-inverse;
+}
+
+// group
+.btn-group {
+    @extend %btn-group;
+}
+
+// large
+.btn-large {
+    @extend %btn-large;
+}
+
+// small
+.btn-small {
+    @extend %btn-small;
+}

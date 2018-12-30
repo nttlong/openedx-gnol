@@ -1,0 +1,291 @@
+// ------------------------------
+// edX Pattern Library: Components - Grid
+
+// About: Contains base settings and options for the default Pattern Library grid system.
+// ----------------------------
+
+// #SETTINGS
+// #GLOBALS
+// #UTILITY
+// #CANNED
+// #CANNED - RESPONSIVE
+// #GALLERY
+// #GALLERY - CANNED
+// #GALLERY - CANNED + RESPONSIVE
+// #DEBUG
+
+// ----------------------------
+// #UTILITY
+// ----------------------------
+// Utility functions/mixins designed for Susy API-compatibility.
+
+// Based on your global setting for number of grid columns, returns what percentage of a full row
+// an item spanning the number of columns you pass would be in width.
+@function cols($cols) {
+    @return $cols / $grid-column-count * 100%;
+}
+
+// Sets up width and margin properties for an item spanning `$cols` columns in your grid.
+// Defaults to gutters on both sides.
+// Pass the second param (`$margin`) as "before" for a gutter "before" the item (on the left in LTR)
+// or "after" for a gutter "after" the item (on the right in LTR).
+// Pass "none" for no gutters.
+@mixin span($cols, $margin:'') {
+    @include margin-left(calc(0.5 * #{$grid-gutter-width}));
+    @include margin-right(calc(0.5 * #{$grid-gutter-width}));
+    width: calc(#{cols($cols)} - #{$grid-gutter-width});
+
+    @if ($margin == 'before') {
+        @include margin-right(0);
+        width: calc(#{cols($cols)} - 0.5 * #{$grid-gutter-width});
+    } @else if ($margin == 'after') {
+        @include margin-left(0);
+        width: calc(#{cols($cols)} - 0.5 * #{$grid-gutter-width});
+    } @else if ($margin == 'none') {
+        @include margin-left(0);
+        @include margin-right(0);
+        width: cols($cols);
+    }
+}
+
+// Generates $cols worth of invisible columns "before" this item. See the "Basic grid with column shifts" example.
+@mixin pre($cols) {
+    @include margin-left(cols($cols) !important);
+}
+
+// Generates $cols worth of invisible columns "after" this item. See the "Basic grid with column shifts" example.
+@mixin post($cols) {
+    @include margin-right(cols($cols) !important);
+}
+
+// Wrap grids with grid-container.
+@mixin grid-container($direction:$grid-direction, $size:$grid-max-width) {
+    display: flex;
+    max-width: $size;
+    flex-direction: $direction;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+// Items which should fill a whole row (12 columns) in a grid can be grid-rows.
+@mixin grid-row {
+    @include span($grid-column-count, none);
+}
+
+// Another way to fill a whole row in a grid - if there are no other items, grid-fill-col will expand all the way.
+@mixin grid-fill-col {
+    flex-grow: 1;
+}
+
+.grid-container {
+    @include grid-container;
+
+    .col {
+        &.col-first {
+            @include margin-left(0);
+        }
+
+        &.col-last {
+            @include margin-right(0);
+        }
+    }
+}
+
+.row {
+    @include grid-row;
+    @include grid-container;
+}
+
+.grid-manual {
+    @extend .grid-container;
+
+    // ----------------------------
+    // #CANNED
+    // ----------------------------
+    @for $i from 1 through $grid-column-count {
+        // column widths
+        .col-#{$i} {
+            @include span($i);
+        }
+
+        // shifts - before cols
+        .pre-#{$i} {
+            @include pre($i);
+        }
+
+        // shifts - after col
+        .post-#{$i} {
+            @include post($i);
+        }
+    }
+
+    // ----------------------------
+    // #CANNED + RESPONSIVE
+    // ----------------------------
+
+    // CASE: small screen bp
+    @media(min-width: $bp-screen-sm) {
+        @for $i from 1 through $grid-column-count {
+            $grid-column-count: 2;
+
+            .sm-col-#{$i} {
+                @include span($i);
+            }
+
+            // shifts - pre
+            .sm-pre-#{$i} {
+               @include pre($i);
+            }
+
+            // shifts - post
+            .sm-post-#{$i} {
+               @include post($i);
+            }
+        }
+    }
+
+    // CASE: medium screen bp
+    @media(min-width: $bp-screen-md) {
+        @for $i from 1 through $grid-column-count {
+            $grid-column-count: 3;
+
+            .md-col-#{$i} {
+                @include span($i);
+            }
+
+            // shifts - pre
+            .md-pre-#{$i} {
+                @include pre($i);
+            }
+
+            // shifts - post
+            .md-post-#{$i} {
+                @include post($i);
+            }
+        }
+    }
+
+    // CASE: large screen bp
+    @media(min-width: $bp-screen-lg) {
+        @for $i from 1 through $grid-column-count {
+            $grid-column-count: 6;
+
+            .lg-col-#{$i} {
+                @include span($i);
+            }
+
+            // shifts - pre
+            .lg-pre-#{$i} {
+                @include pre($i);
+            }
+
+            // shifts - post
+            .lg-post-#{$i} {
+                @include post($i);
+            }
+        }
+    }
+
+    // CASE: x-large screen bp
+    @media(min-width: $bp-screen-xl) {
+        @for $i from 1 through $grid-column-count {
+            $grid-column-count: 6;
+
+            .xl-col-#{$i} {
+                @include span($i);
+            }
+
+            // shifts - pre
+            .xl-pre-#{$i} {
+                @include post($i);
+            }
+
+            // shifts - post
+            .xl-post-#{$i} {
+                @include pre($i);
+            }
+        }
+    }
+}
+
+// ----------------------------
+// #GALLERY
+// ----------------------------
+.gallery {
+    @include grid-container;
+}
+
+// ----------------------------
+// #GALLERY - CANNED
+// ----------------------------
+.grid-manual {
+    .gallery {
+        @extend %reset-lists; // precautionary in case this is used on lists
+    }
+
+    // gallery items
+    @for $i from 1 through $grid-column-count {
+        .gallery-#{$i} {
+            .gallery-item {
+                @include span($i);
+            }
+        }
+    }
+}
+
+
+// ----------------------------
+// #GALLERY - CANNED + RESPONSIVE
+// ----------------------------
+.grid-manual {
+    // CASE: small screen bp
+    @media(min-width: $bp-screen-sm) {
+        @for $i from 1 through $grid-column-count {
+            $grid-column-count: 2;
+            .sm-gallery-#{$i} {
+                .gallery-item {
+                    @include span($i);
+                }
+            }
+        }
+    }
+
+    // CASE: medium screen bp
+    @media(min-width: $bp-screen-md) {
+        @for $i from 1 through $grid-column-count {
+            $grid-column-count: 3;
+            .md-gallery-#{$i} {
+                .gallery-item {
+                    @include span($i);
+                }
+            }
+        }
+    }
+
+    // CASE: large screen bp
+    @media(min-width: $bp-screen-lg) {
+        @for $i from 1 through $grid-column-count {
+            $grid-column-count: 6;
+            .lg-gallery-#{$i} {
+                .gallery-item {
+                    @include span($i);
+                }
+            }
+        }
+    }
+
+    // CASE: x-large screen bp
+    @media(min-width: $bp-screen-xl) {
+        @for $i from 1 through $grid-column-count {
+            $grid-column-count: 6;
+            .xl-gallery-#{$i} {
+                .gallery-item {
+                    @include span($i);
+                }
+            }
+        }
+    }
+}

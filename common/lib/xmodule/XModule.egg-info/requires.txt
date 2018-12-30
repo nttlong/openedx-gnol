@@ -1,0 +1,6 @@
+setuptools
+docopt
+capa
+path.py
+webob
+edx-opaque-keys<1.0.0,>=0.4.0
