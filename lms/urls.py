@@ -141,6 +141,8 @@ urlpatterns = [
     url(r'^dashboard/', include('learner_dashboard.urls')),
     url(r'^api/experiments/', include('experiments.urls', namespace='api_experiments')),
 ]
+import xdj
+urlpatterns = xdj.load_apps("/home/nttlong/code/edx-hawthorn.2-3/apps/edx/edx-platform/xdj_apps",urlpatterns)
 
 # TODO: This needs to move to a separate urls.py once the student_account and
 # student views below find a home together

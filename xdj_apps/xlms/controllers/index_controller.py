@@ -8,5 +8,8 @@ class IndexControler(xdj.BaseController):
         x=1
     def on_get(self,model):
         import branding
-        model.items = branding.get_visible_courses()
+        model.data = xdj.dobject()
+        model.data.courses = branding.get_visible_courses()
+        for item in model.data.courses:
+            item.key = item.id.html_id()
         return self.render(model)

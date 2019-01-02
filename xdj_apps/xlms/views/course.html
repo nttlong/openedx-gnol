@@ -6,37 +6,20 @@
     <main id="main" aria-label="Content" tabindex="-1">
         <section class="home">
             <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding:0px !important;overflow-y:auto;" id="left">
                     <ul  class="list-group">
                         <li class="list-group-item" ng-repeat="p in courseOutline" ng-click="$root.doSetData(p);$event.stopPropagation();">
                             {{p.display_name}}
                             <ul class="list-group" id="demo">
                                 <li class="list-group-item" ng-repeat="x in p.children" ng-click="$root.doSetData(x);$event.stopPropagation();">
                                     {{x.display_name}}
-                                    <ul class="list-group">
-                                        <li class="list-group-item" ng-repeat="y in x.children" ng-click="$root.doSetData(y);$event.stopPropagation();">
-                                            <!--<a href="{{y.lms_web_url}}">-->
-                                                <!--{{y.display_name}}-->
-                                            <!--</a>-->
-                                            {{y.display_name}}
-                                            <ul class="list-group">
-                                                <li class="list-group-item" ng-repeat="m in y.children" ng-click="$root.doSetData(m);$event.stopPropagation();">
-                                                    {{m.display_name}}
-                                                </li>
-
-                                            </ul>
-                                        </li>
-                                    </ul>
                                 </li>
                             </ul>
 
                         </li>
                     </ul>
                 </div>
-                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                    <h3>
-                        {{data.student_view_url}}
-                    </h3>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="padding:0px !important" id="right">
                     <div id="lms-contenxt">
 
                     </div>
@@ -57,11 +40,12 @@
 </div>
 <script>
     function onInit(scope){
+
         scope.courseOutline=${to_json(outline.children)};
+
         scope.$applyAsync();
         scope.data={}
         scope.$root.doSetData=function(x){
-            console.log(x);
             scope.data=x;
             var iframe = document.createElement('iframe');
             var mask = $("<div class=\"mask\"></div>").appendTo("body");
@@ -75,11 +59,18 @@
             //iframe.src="http://localhost:8000/courses/course-v1:T+A001+B002/jump_to/block-v1:T+A001+B002+type@problem+block@45d56a33c6104132b0eafb7012967b0d"&ndash;&gt;
             $(iframe).css({
                 width:"100%",
-                overflow:"hidden",
-                "border":"solid 4px red",
+                //overflow:"hidden",
                 "float":"left"
             });
-            $(iframe).attr("frameBorder","0").attr("scrolling","no");
+            $(iframe).css({
+                "max-height":($(window).height()-80)+"px"
+            })
+            $("body").css({
+                "overflow-y":"hidden"
+            });
+
+            $(iframe).attr("frameBorder","0")
+            //.attr("scrolling","no");
             $("#lms-contenxt").empty();
             $(iframe).appendTo("#lms-contenxt");
 
@@ -116,7 +107,19 @@
 
             //alert(scope.data.student_view_url);
             scope.$applyAsync();
-        }
 
+
+        }
+        scope.$root.doSetData(scope.courseOutline[0]);
     }
+    $(document).ready(function(){
+        $("#left").css({
+                "max-height":($(window).height()-80)+"px",
+                //"border":"solid 4px red",
+                "overflow-y":"auto"
+            });
+        $("#right").css({
+                "max-height":($(window).height()-80)+"px"
+            });
+    });
 </script>
