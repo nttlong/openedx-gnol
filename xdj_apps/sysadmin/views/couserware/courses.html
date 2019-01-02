@@ -1,0 +1,40 @@
+<div>
+    <ul class="list-group">
+    	<li ng-repeat="p in courses" class="list-group-item">
+            <table>
+                <tr>
+                    <td valign="top"><img src="${absUrl}{{p.course_image_url}}" style="max-width:120px;min-width:120px"></td>
+                    <td style="width:100%">
+                        <div class="container-fluid">
+                            <span>${_//"Mã khóa học"}</span>:<b> {{p.course_id}}</b><br>
+                            <span>${_//"Tên"}</span>:{{p.display_name}}<br>
+                            <span>enrollment_end</span>:{{p.enrollment_end}}<br>
+                            <span>org</span>:{{p.org}}<br>
+                            <span>${_//"Số học viên tối đa"}</span>:{{p.max_student_enrollments_allowed}}<br>
+                            <span>announcement</span>:{{p.announcement}}<br>
+                            <span>start</span>:{{p.start}}<br>
+                            <span>short_description</span>:{{p.short_description}}<br>
+                            <span>{{p.students}}</span>
+                            <span>${_//"Tác giả"}</span>:{{p.author.username}}<br>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div class="btn-toolbar" role="toolbar">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default" ng-click="$parent.delete_course_id=p.course_id;doDelete();">${_//"Xóa"}</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </li>
+
+    </ul>
+  
+<ajax url="${currentUrl}">
+    <call data-id="doLoadItems" ng-model="courses"/>
+    <call data-id="doDeleteItem" data-params="{course_id:delete_course_id}" data-function="doDelete"/>
+</ajax>
+</div>

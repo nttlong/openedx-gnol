@@ -1,0 +1,24 @@
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        % for item in menu:
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-dashboard"></i> <span>${item.caption}</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              % for subItem in item.items:
+                <li class="active"><a href="#page=${subItem.page}"><i class="fa fa-circle-o"></i>${subItem.caption}</a></li>
+              % endfor
+            </ul>
+          </li>
+        % endfor
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>

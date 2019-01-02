@@ -1,0 +1,14 @@
+<div style="min-height:400px">
+  <ul>
+  %for item in items:
+    <li>
+      <a href="${appUrl}/course/${item.id.__str__()}">
+        ${item.display_name}
+      </a>
+      
+
+    </li>
+
+  %endfor
+  </ul>
+</div>

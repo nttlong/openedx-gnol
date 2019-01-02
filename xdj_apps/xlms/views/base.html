@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--[if lte IE 9]><html class="ie ie9 lte9" lang="en" ng-app="lms"><![endif]-->
+<!--[if !IE]><!--><html lang="en" ng-app="lms"><!--<![endif]-->
+<head dir="ltr">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>
+        | Your Platform Name Here
+      </title>
+	  <%include file="commons/script.html"/>
+     <%block name="header"/>
+
+</head>
+<body ng-controller="lms">
+	<%include file="commons/nav_bar.html"/>
+    ${self.body()}
+    <!--<%include file="commons/footer.html"/>-->
+<script>
+    var mdl= angular.module("lms",[])
+    var contoller=mdl.controller("lms",["$scope",function(scope){
+        if(window.onInit){
+            window.onInit(scope);
+        }
+
+    }]);
+</script>
+</body>
+</html>
+
+

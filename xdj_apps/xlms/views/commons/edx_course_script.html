@@ -1,0 +1,341 @@
+  <script type="text/javascript" src="/static/js/i18n/en/djangojs.js"></script>
+  <script type="text/javascript" src="/static/js/ie11_find_array.js"></script>
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
+  <link rel="stylesheet" href="/static/css/vendor/font-awesome.css" type="text/css" media="all" / >
+  <link rel="stylesheet" href="/static/css/vendor/jquery.qtip.min.css" type="text/css" media="all" / >
+  <link rel="stylesheet" href="/static/css/lms-main-v1.css" type="text/css" media="all" / >
+  <script type="text/javascript" src="/static/common/js/vendor/jquery.js"></script>
+  <script type="text/javascript" src="/static/common/js/vendor/jquery-migrate.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/jquery.cookie.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/url.min.js"></script>
+  <script type="text/javascript" src="/static/common/js/vendor/underscore.js"></script>
+  <script type="text/javascript" src="/static/common/js/vendor/underscore.string.js"></script>
+  <script type="text/javascript" src="/static/common/js/vendor/picturefill.js"></script>
+  <script type="text/javascript" src="/static/edx-ui-toolkit/js/utils/global-loader.js"></script>
+  <script type="text/javascript" src="/static/edx-ui-toolkit/js/utils/string-utils.js"></script>
+  <script type="text/javascript" src="/static/edx-ui-toolkit/js/utils/html-utils.js"></script>
+  <script type="text/javascript" src="/static/common/js/vendor/require.js"></script>
+  <script type="text/javascript" src="/static/js/RequireJS-namespace-undefine.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/URI.min.js"></script>
+  <script type="text/javascript" src="/static/common/js/vendor/backbone.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/json2.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/jquery.qtip.min.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/jquery.ba-bbq.min.js"></script>
+  <script type="text/javascript" src="/static/js/src/ajax_prefix.js"></script>
+  <script type="text/javascript" src="/static/js/src/jquery.immediateDescendents.js"></script>
+  <script type="text/javascript" src="/static/js/src/xproblem.js"></script>
+  <script type="text/javascript" src="/static/common/js/xblock/core.js"></script>
+  <script type="text/javascript" src="/static/common/js/xblock/runtime.v1.js"></script>
+  <script type="text/javascript" src="/static/lms/js/xblock/lms.runtime.v1.js"></script>
+  <script type="text/javascript" src="/static/js/src/utility.js"></script>
+  <script type="text/javascript" src="/static/js/src/logger.js"></script>
+  <script type="text/javascript" src="/static/js/user_dropdown_v1.js"></script>
+  <script type="text/javascript" src="/static/js/dialog_tab_controls.js"></script>
+  <script type="text/javascript" src="/static/js/src/string_utils.js"></script>
+  <script type="text/javascript" src="/static/js/form.ext.js"></script>
+  <script type="text/javascript" src="/static/js/src/ie_shim.js"></script>
+  <script type="text/javascript" src="/static/js/src/accessibility_tools.js"></script>
+  <script type="text/javascript" src="/static/js/toggle_login_modal.js"></script>
+  <script type="text/javascript" src="/static/js/src/lang_edx.js"></script>
+  <script type="text/javascript" src="/static/js/calculator.js"></script>
+  <script type="text/javascript" src="/static/js/feedback_form.js"></script>
+  <script type="text/javascript" src="/static/js/main.js"></script>
+  <script type="text/javascript" src="/static/js/sticky_filter.js"></script>
+  <script type="text/javascript" src="/static/js/query-params.js"></script>
+  <script type="text/javascript" src="/static/common/js/vendor/moment-with-locales.js"></script>
+  <script type="text/javascript" src="/static/common/js/vendor/moment-timezone-with-data.js"></script>
+  <script type="text/javascript" src="/static/bundles/commons.d60dcd98c024881d011e.js" ></script>
+<script>
+    window.baseUrl = "${static}/";
+    (function (require) {
+      require.config({
+          baseUrl: window.baseUrl
+      });
+    }).call(this, require || RequireJS.require);
+  </script>
+  <script type="text/javascript" src="/static/lms/js/require-config.js"></script>
+    <script type="text/javascript">
+        (function (require) {
+          require.config({
+              paths: {
+                'js/courseware/courseware_factory': '${static}/js/courseware/courseware_factory',
+                'draggabilly': '${static}/js/vendor/draggabilly',
+                'js/courseware/toggle_element_visibility': '${static}/js/courseware/toggle_element_visibility',
+                'hls': '${static}/common/js/vendor/hls',
+                'js/courseware/link_clicked_events': '${static}/js/courseware/link_clicked_events',
+                'moment': '${static}/common/js/vendor/moment-with-locales',
+                'moment-timezone': '${static}/common/js/vendor/moment-timezone-with-data',
+                'js/student_account/logistration_factory': '${static}/js/student_account/logistration_factory',
+                'js/groups/views/cohorts_dashboard_factory': '${static}/js/groups/views/cohorts_dashboard_factory',
+                'js/dateutil_factory': '${static}/js/dateutil_factory',
+                'course_bookmarks/js/views/bookmark_button': '${static}/course_bookmarks/js/views/bookmark_button',
+                'js/courseware/accordion_events': '${static}/js/courseware/accordion_events',
+                'js/views/message_banner': '${static}/js/views/message_banner',
+                'js/groups/discussions_management/discussions_dashboard_factory': 'j${static}/s/discussions_management/views/discussions_dashboard_factory',
+                'js/courseware/course_info_events': '${static}/js/courseware/course_info_events'
+            }
+          });
+        }).call(this, require || RequireJS.require);
+    </script>
+  <link rel="stylesheet" href="/static/js/vendor/CodeMirror/codemirror.css" type="text/css" media="all" / >
+  <link rel="stylesheet" href="/static/css/vendor/jquery.treeview.css" type="text/css" media="all" / >
+  <link rel="stylesheet" href="/static/css/vendor/ui-lightness/jquery-ui-1.8.22.custom.css" type="text/css" media="all" / >
+  <link rel="stylesheet" href="/static/css/lms-course.css" type="text/css" media="all" / >
+  <script type="text/javascript" src="/static/js/jquery.autocomplete.js"></script>
+  <script type="text/javascript" src="/static/js/src/tooltip_manager.js"></script>
+  <link href="/static/css/vendor/jquery.autocomplete.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="/static/bundles/XModuleShim.68b7a679342e3bdb698f.js" ></script>
+  <script type="text/javascript" src="/static/bundles/CapaModule.c6eb163b20ce039c3d33.js" ></script>
+  <script type="text/javascript" src="/static/bundles/VerticalStudentView.6f1068648eb9e8d18da9.js" ></script>
+  <script type="application/json" id="user-metadata">
+        {
+            "username": "root",
+            "enrollment_mode": null,
+            "upgrade_link": null,
+            "user_id": 2,
+            "course_start": null,
+            "upgrade_deadline": null,
+            "course_key_fields": {
+                "org": "T",
+                "run": "B002",
+                "course": "A001",
+            },
+            "course_end": null,
+            "pacing_type": null,
+            "upgrade_price": null,
+            "course_id": "course-v1:T+A001+B002",
+            "has_staff_access": null, "forum_roles": null,
+            "enrollment_time": null, "schedule_start": null,
+            "email": "user@example.com"}
+  </script>
+<!-- dummy Segment -->
+<script type="text/javascript">
+  var analytics = {
+    track: function() { return; },
+    trackLink: function() { return; },
+    pageview: function() { return; },
+    page: function() { return; }
+  };
+</script>
+
+
+ <script type="json/xblock-args" class="xblock-json-init-args">
+    {"xmodule-type": "Problem"}
+ </script>
+<script type="text/javascript">
+// assumes courseware.html's loaded this method.
+$(function () {
+    setup_debug('45d56a33c6104132b0eafb7012967b0d',
+        null,
+        {
+            'location': 'block\u002Dv1:T+A001+B002+type@problem+block@45d56a33c6104132b0eafb7012967b0d',
+            'xqa_key': 'None',
+            'category': 'CapaModuleWithMixins',
+            'user': 'root'
+        }
+    );
+});
+</script>
+ <script type="text/javascript" src="/static/common/js/vendor/jquery.scrollTo.js"></script>
+ <script type="text/javascript" src="/static/js/vendor/flot/jquery.flot.js"></script>
+      <script type="text/javascript" src="/static/js/ajax-error.js"></script>
+      <script type="text/javascript" src="/static/js/courseware.js"></script>
+      <script type="text/javascript" src="/static/js/histogram.js"></script>
+      <script type="text/javascript" src="/static/js/navigation.js"></script>
+      <script type="text/javascript" src="/static/js/modules/tab.js"></script>
+<script type="text/javascript">
+    // Fast Preview was introduced in 2.5. However, it
+    // causes undesirable flashing/font size changes when
+    // MathJax is used for interactive preview (equation editor).
+    // Setting processSectionDelay to 0 (see below) fully eliminates
+    // fast preview, but to reduce confusion, we are also setting
+    // the option as displayed in the context menu to false.
+    // When upgrading to 2.6, check if this variable name changed.
+    window.MathJax = {
+      menuSettings: {CHTMLpreview: false}
+    };
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [
+        ["\\(","\\)"],
+        ['[mathjaxinline]','[/mathjaxinline]']
+      ],
+      displayMath: [
+        ["\\[","\\]"],
+        ['[mathjax]','[/mathjax]']
+      ]
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+
+  // In order to eliminate all flashing during interactive
+  // preview, it is necessary to set processSectionDelay to 0
+  // (remove delay between input and output phases). This
+  // effectively disables fast preview, regardless of
+  // the fast preview setting as shown in the context menu.
+  MathJax.Hub.processSectionDelay = 0;
+
+  MathJax.Hub.signal.Interest(function(message) {
+    if(message[0] === "End Math") {
+        set_mathjax_display_div_settings();
+    }
+  });
+  function set_mathjax_display_div_settings() {
+    $('.MathJax_Display').each(function( index ) {
+      this.setAttribute('tabindex', '0');
+      this.setAttribute('aria-live', 'off');
+      this.removeAttribute('role');
+      this.removeAttribute('aria-readonly');
+    });
+  }
+</script>
+
+
+<!-- This must appear after all mathjax-config blocks, so it is after the imports from the other templates.
+     It can't be run through static.url because MathJax uses crazy url introspection to do lazy loading of
+     MathJax extension libraries -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_SVG"></script>
+
+
+
+<script type="text/javascript" src="/static/js/vendor/jquery.leanModal.js"></script>
+<script type="text/javascript" src="/static/js/staff_debug_actions.js"></script>
+<script type="text/javascript">
+
+function setup_debug(element_id, edit_link, staff_context){
+    var staffDebugTrigger = $('#' + element_id + '_trig'),
+        xqaLogTrigger = $('#' + element_id + '_xqa_log'),
+        historyTrigger = $("#" + element_id + "_history_trig"),
+        debugModalSelector = '#' + element_id + '_debug',
+        historyModalSelector = '#' + element_id + '_history',
+        xqaModalSelector = '#' + element_id + '_xqa-modal',
+        leanOverlaySelector = $('#lean_overlay');
+
+    staffDebugTrigger.leanModal();
+    xqaLogTrigger.leanModal();
+    $('#' + element_id + '_xqa_form').submit(function () {sendlog(element_id, edit_link, staff_context);});
+
+    historyTrigger.leanModal();
+
+    $('#' + element_id + '_history_form').submit(
+        function () {
+            var username = $("#" + element_id + "_history_student_username").val();
+            var location = $("#" + element_id + "_history_location").val();
+
+            $("#" + element_id + "_history_text").load('/courses/' + "course-v1%3AT%2BA001%2BB002" +
+                "/submission_history/" + username + "/" + location);
+            return false;
+        }
+    );
+
+    DialogTabControls.setKeydownListener($(debugModalSelector), leanOverlaySelector);
+    DialogTabControls.setKeydownListener($(historyModalSelector), leanOverlaySelector);
+    DialogTabControls.setKeydownListener($(xqaModalSelector), leanOverlaySelector);
+
+    staffDebugTrigger.on('click', function() {
+        DialogTabControls.initializeTabKeyValues(debugModalSelector);
+        $(debugModalSelector).attr("aria-hidden", "false");
+    });
+
+    historyTrigger.on('click', function() {
+        DialogTabControls.initializeTabKeyValues(historyModalSelector);
+        $(historyModalSelector).attr("aria-hidden", "false");
+    });
+
+    xqaLogTrigger.on('click', function() {
+        DialogTabControls.initializeTabKeyValues(xqaModalSelector);
+        $(xqaModalSelector).attr("aria-hidden", "false");
+    });
+
+    leanOverlaySelector.click(function () {
+        $(xqaModalSelector).attr("aria-hidden", "true");
+        $(historyModalSelector).attr("aria-hidden", "true");
+        $(debugModalSelector).attr("aria-hidden", "true");
+      })
+}
+
+function sendlog(element_id, edit_link, staff_context){
+
+    var xqaLog = {
+            authkey: staff_context.xqa_key,
+            location: staff_context.location,
+            category : staff_context.category,
+            'username' : staff_context.user.username,
+            'return' : 'query',
+            format : 'html',
+            email : staff_context.user.email,
+            tag:$('#' + element_id + '_xqa_tag').val(),
+            entry: $('#' + element_id + '_xqa_entry').val()
+        };
+
+    $.ajax({
+        url: 'http://your_xqa_server.com/log',
+        type: 'GET',
+        contentType: 'application/json',
+        data: JSON.stringify(xqaLog),
+        crossDomain: true,
+        dataType: 'jsonp',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", "Basic eHFhOmFnYXJ3YWw="); },
+        timeout : 1000,
+        success: function(result) {
+                $('#' + element_id + '_xqa_log_data').html(result);
+        },
+        error: function() {
+            alert('Error: cannot connect to XQA server. Check the value of the XQA_SERVER setting.');
+            console.log('error!');
+        }
+    });
+    return false;
+};
+
+function getlog(element_id, staff_context){
+
+    var xqaQuery = {
+        authkey: staff_context.xqa_key,
+        location: staff_context.location,
+        format: 'html'
+    };
+
+    $.ajax({
+        url: 'http://your_xqa_server.com/query',
+        type: 'GET',
+        contentType: 'application/json',
+        data: JSON.stringify(xqaQuery),
+        crossDomain: true,
+        dataType: 'jsonp',
+        timeout : 1000,
+        success: function(result) {
+            $('#' + element_id + '_xqa_log_data').html(result);
+        },
+        error: function() {
+            alert('Error: cannot connect to XQA server. Check the value of the XQA_SERVER setting.');
+        }
+    });
+
+
+};
+</script>
+
+
+  <script type="text/javascript">
+    var $$course_id = "course\u002Dv1:T+A001+B002";
+  </script>
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/static/js/vendor/noreferrer.js" charset="utf-8"></script>
+  <script type="text/javascript" src="/static/js/utils/navigation.js" charset="utf-8"></script>
+  <script type="text/javascript" src="/static/js/header/header.js"></script>
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <form action="${appUrl}/login" method="post">
+      <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token.__str__()}"/>
+
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Email" name="username" >
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password" name="password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      % if isError:
+        <div class="form-group has-feedback">
+            ${_//"Đăng nhập không thành công!"}
+        </div>
+      % endif
+
+      <div class="row">
+
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">${_//"Đăng nhập"}</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+</body>
+</html>

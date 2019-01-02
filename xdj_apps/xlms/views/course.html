@@ -1,0 +1,122 @@
+<%inherit file="base.html"/>
+<%block name="header_script">
+
+</%block>
+<div class="content-wrapper main-container" id="content">
+    <main id="main" aria-label="Content" tabindex="-1">
+        <section class="home">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <ul  class="list-group">
+                        <li class="list-group-item" ng-repeat="p in courseOutline" ng-click="$root.doSetData(p);$event.stopPropagation();">
+                            {{p.display_name}}
+                            <ul class="list-group" id="demo">
+                                <li class="list-group-item" ng-repeat="x in p.children" ng-click="$root.doSetData(x);$event.stopPropagation();">
+                                    {{x.display_name}}
+                                    <ul class="list-group">
+                                        <li class="list-group-item" ng-repeat="y in x.children" ng-click="$root.doSetData(y);$event.stopPropagation();">
+                                            <!--<a href="{{y.lms_web_url}}">-->
+                                                <!--{{y.display_name}}-->
+                                            <!--</a>-->
+                                            {{y.display_name}}
+                                            <ul class="list-group">
+                                                <li class="list-group-item" ng-repeat="m in y.children" ng-click="$root.doSetData(m);$event.stopPropagation();">
+                                                    {{m.display_name}}
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <h3>
+                        {{data.student_view_url}}
+                    </h3>
+                    <div id="lms-contenxt">
+
+                    </div>
+
+                    <!--<iframe src="{{data.lms_web_url}}"></iframe>-->
+                    <!--<iframe src="{{data.student_view_url}}" style="width:100%;min-height:1600px" width="100%"></iframe>-->
+                    <!--{{data}}-->
+                    <!--<div ng-repeat="p in data" class="container">-->
+                        <!--{{p}}-->
+                    <!--</div>-->
+
+                </div>
+            </div>
+
+
+        </section>
+    </main>
+</div>
+<script>
+    function onInit(scope){
+        scope.courseOutline=${to_json(outline.children)};
+        scope.$applyAsync();
+        scope.data={}
+        scope.$root.doSetData=function(x){
+            console.log(x);
+            scope.data=x;
+            var iframe = document.createElement('iframe');
+            var mask = $("<div class=\"mask\"></div>").appendTo("body");
+            iframe.onload = function() {
+                this.style.height =(this.contentWindow.document.body.offsetHeight + 60)+'px';
+                this.style.width ="100%"
+                //alert('myframe is loaded');
+                mask.remove();
+            }; // before setting 'src'
+            iframe.src = scope.data.student_view_url;
+            //iframe.src="http://localhost:8000/courses/course-v1:T+A001+B002/jump_to/block-v1:T+A001+B002+type@problem+block@45d56a33c6104132b0eafb7012967b0d"&ndash;&gt;
+            $(iframe).css({
+                width:"100%",
+                overflow:"hidden",
+                "border":"solid 4px red",
+                "float":"left"
+            });
+            $(iframe).attr("frameBorder","0").attr("scrolling","no");
+            $("#lms-contenxt").empty();
+            $(iframe).appendTo("#lms-contenxt");
+
+            //document.body.appendChild(iframe);
+            debugger;
+            /*$.ajax({
+                    url:scope.data.student_view_url,
+                    method:"GET",
+                    success:function(res){
+                        alert("OK");
+                        debugger;
+                        console.log(res);
+                    },
+                    error:function(err){
+                        $("#lms-contenxt").empty();
+                        var x=err.responseText
+                        var hi=x.indexOf("<head")
+                        var hj=x.indexOf("</head>")+"</head>".length;
+
+                        var htmlHead=$(x.substring(hi,hj));
+                        //htmlHead.appendTo("body");
+                        console.log(htmlHead);
+
+                        var i=x.indexOf("<body")
+                        var j=x.indexOf("</body>")
+                        var html=$(x.substring(i,j));
+                        html.find("script").appendTo("body")
+                        html.find("script").remove();
+                        html.appendTo($("#lms-contenxt")[0])
+
+
+                    }
+                    })*/
+
+            //alert(scope.data.student_view_url);
+            scope.$applyAsync();
+        }
+
+    }
+</script>

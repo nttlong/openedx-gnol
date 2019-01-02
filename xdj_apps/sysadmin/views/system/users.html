@@ -1,0 +1,63 @@
+<div title="${_>>'Danh sách người dùng'}">
+    <div class="container" ng-show="!$root.$history.data().user">
+        <div class="row">
+    	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    		<div class="input-group">
+                <input type="text" class="form-control" ng-model="txtSearch">
+                <span class="input-group-addon" ng-click="doLoadItems()">${_//"Tìm"}</span>
+              </div>
+    	</div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        	<div class="btn-toolbar pull-right" role="toolbar">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">1</button>
+            <button type="button" class="btn btn-default">2</button>
+            <button type="button" class="btn btn-default">3</button>
+            <button type="button" class="btn btn-default">4</button>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">5</button>
+            <button type="button" class="btn btn-default">6</button>
+            <button type="button" class="btn btn-default">7</button>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-click="doLoadItems()">${_//"Nạp lại"}</button>
+        </div>
+    </div>
+        </div>
+    </div>
+        <div class="row">
+             &nbsp;
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>${_>"Username"}</th>
+                    <th>${_>"Email"}</th>
+                    <th>${_>"Họ"}</th>
+                    <th>${_>"Tên"}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="p in users.items">
+                    <td><a href="#{{$root.$url().param('user',p.username).url()}}">{{p.username}}</a></td>
+                    <td>{{p.email}}</td>
+                    <td>{{p.first_name}}</td>
+                    <td>{{p.last_name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container"  ng-if="$root.$history.data().user">
+        <div q-template  url="${appUrl}/system/users/user">
+
+        </div>
+
+    </div>
+    <ajax url="${currentUrl}">
+            <call data-id="doLoadItems" data-params="{pageSize:50,pageIndex:pageIndex||0}" ng-model="users"/>
+            <call data-id="doLoadItems" data-params="{pageSize:50,pageIndex:pageIndex||0,search:txtSearch}" data-function="doLoadItems" ng-model="users"/>
+            <call data-id="user.doLoadItem" data-params="{username:$root.$history.data().user}" data-function="doLoadUser" ng-model="user"/>
+            <call data-id="user.doUpdateItem" data-params="{user:user}" data-function="doUpdateUser"/>
+    </ajax>
+</div>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="admin">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>${_//"Hệ thống quản trị"}</title>
+  <%include file="common/header.html"/>
+  <%include file="common/script.html"/>
+  <%include file="common/static.html"/>
+  <style>
+
+
+  </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini" ng-controller="admin">
+<div class="wrapper">
+
+  <%include file="common/nav-bar.html"/>
+  <%include file="common/main-sidebar.html"/>
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+          <div class="box">
+            <div class="box-body">
+              <div q-template ng-if="$root.urlPage" url="${appUrl}/{{$root.urlPage}}" >
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </div>
+  <div class="control-sidebar-bg"></div>
+</div>
+<script>
+  var mdl=angular.module("admin",["q-ui"]);
+  mdl.controller("admin",["$compile","$scope",function($compile,scope){
+      history_navigator(scope.$root);
+      scope.$root.$url=$url
+      scope.$root.$dialog=dialog
+      scope.$root.$compile=$compile;
+      scope.$root.$history.change(function(data){
+         scope.$root.urlPage=data.page;
+         scope.$root.$applyAsync();
+      });
+      scope.$root.$back=function(){
+         window.history.back()
+      }
+      scope.$root.$applyAsync();
+
+  }])
+</script>
+
+</body>
+</html>

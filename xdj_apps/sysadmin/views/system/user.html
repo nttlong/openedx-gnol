@@ -1,0 +1,48 @@
+<div title="${_>'Thông tin user'}" ng-init="$parent.doLoadUser()">
+    <div form-layout>
+        <div form-template>
+            <div>
+                <span>${_>"Username"}</span>
+                <input type="text" ng-model="$parent.user.username" readonly="readonly">
+                <span>${_>"Email"}</span>
+                <input type="text" ng-model="$parent.user.email" readonly="readonly">
+                <span>${_>"Họ"}</span>
+                <input type="text" ng-model="$parent.user.first_name">
+                <span>${_>"Tên"}</span>
+                <input type="text" ng-model="$parent.user.last_name">
+            </div>
+            <div>
+                <span>${_>"Là giản viên"}</span>
+                <input type="checkbox" ng-model="$parent.user.is_staff">
+                <span>${_>"Là quản trị viên"}</span>
+                <input type="checkbox" ng-model="$parent.user.is_superuser">
+                <span>${_>"Tình trạng"}</span>
+                <div>
+                    <input type="checkbox" ng-model="$parent.user.is_active" id="user_active_status">
+                    <label for="user_active_status">
+                        {{$parent.user.is_active?"Đã kích hoạt":"Chưa kích hoạt"}}
+                    </label>
+                </div>
+            </div>
+            <div>
+                <span>${_>"Ngày tham gia"}</span>
+                <span>{{$parent.user.date_joined|date:"dd-MM-yyyy"}}</span>
+                <span>${_>"Đăng nhập lần cuối lúc"}</span>
+                <span>{{$parent.user.last_login|date:"dd-MM-yyyy hh:mm:ss"}}</span>
+            </div>
+            <div span="12">
+                <div class="btn-toolbar pull-right" role="toolbar" span="12">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default" ng-click="$parent.doUpdateUser();">${_>>"Cập nhật"}</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default" ng-click="$root.$dialog($parent.$id).url('${currentUrl}/reset_password').done()">${_>>"Đặt lại mật khẩu"}</button>
+                    </div>
+                    <div class="btn-group">
+                        <a ng-click="$root.$back()" class="btn btn-default">${_>>"Đóng"}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
